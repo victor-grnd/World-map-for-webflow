@@ -4,7 +4,6 @@ body {
   font-family: "Arial", sans-serif;
   background: #1a1a1a;
   height: auto;
-  border: solid red 8px;
 }
 
 .content_wrapper {
@@ -26,8 +25,6 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  border: solid 8px purple;
-  background-color: grey;
 }
 
 /* Pays sans projets - gris et non cliquables */
