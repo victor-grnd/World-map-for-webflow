@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background: #1a1a1a;
+  height: auto;
+  border: solid red 8px;
+}
+
+.content_wrapper {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+#world-map {
+  width: 1100px;
+  margin: 0;
+  padding: 0;
+  border: solid 8px purple;
+  background-color: grey;
+}
+
+/* Pays sans projets - gris et non cliquables */
+.country-no-project {
+  fill: #2f2f34 !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Pays avec projets - rouge et cliquable */
+.country-with-project {
+  fill: #862f34 !important;
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+/* Pays avec projet au hover */
+.country-with-project:hover {
+  fill: #8a0000 !important;
+}
+
+/* Pays actuellement sélectionné */
+.country-selected {
+  fill: #8a0000 !important;
+}
+
+.country-projects-content {
+  background-color: purple;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
