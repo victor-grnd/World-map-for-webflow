@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Arial", sans-serif;
-  background: #1a1a1a;
   height: auto;
 }
 
@@ -10,7 +9,6 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
   display: flex;
   gap: 32px;
 }
