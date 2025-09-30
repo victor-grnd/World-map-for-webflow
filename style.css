@@ -8,16 +8,22 @@ body {
 }
 
 .content_wrapper {
+  width: 100vw;
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 32px;
 }
 
+.map_wrapper {
+  width: 50%;
+  max-width: 1100px;
+  flex-shrink: 0;
+}
+
 #world-map {
-  width: 1100px;
+  width: 100%;
   margin: 0;
   padding: 0;
   border: solid 8px purple;
