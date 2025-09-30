@@ -1,0 +1,109 @@
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <h2 id="countryName" class="country-title"></h2>
+    <div id="projectsList" class="country-projects-content"></div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    width: 400px;
+    background: #ffffff;
+    padding: 40px 30px;
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  .modal.visible {
+    display: block;
+    border: solid white 8px;
+  }
+
+  .country-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #8a0000;
+  }
+</style>
+
+<script>
+  // Base de données des projets (ADAPTEZ SELON VOS DONNÉES)
+
+
+  // Variable pour suivre le pays actuellement sélectionné
+  let currentSelectedCountry = null;
+
+  // Initialisation au chargement
+  document.addEventListener("DOMContentLoaded", function () {
+    initializeMap();
+  });
+
+  function initializeMap() {
+    const allCountries = document.querySelectorAll("#world-map path");
+
+    allCountries.forEach((countryElement) => {
+      const countryId = countryElement.id;
+
+      if (projectsDatabase[countryId]) {
+        countryElement.classList.add("country-with-project");
+
+        countryElement.addEventListener("click", function (e) {
+          e.preventDefault();
+          selectCountry(countryId, countryElement);
+        });
+      } else {
+        countryElement.classList.add("country-no-project");
+      }
+    });
+  }
+
+  function selectCountry(countryId, countryElement) {
+    if (currentSelectedCountry === countryElement) {
+      return;
+    }
+
+    if (currentSelectedCountry) {
+      currentSelectedCountry.classList.remove("country-selected");
+    }
+
+    currentSelectedCountry = countryElement;
+    countryElement.classList.add("country-selected");
+
+    showCountryDetails(countryId);
+  }
+
+  function showCountryDetails(countryCode) {
+    const country = projectsDatabase[countryCode];
+    if (!country) return;
+
+    const detailsPanel = document.querySelector(".country-projects-content");
+    const countryName = document.querySelector(".country-title");
+
+    let htmlCountryName = country.name;
+    countryName.innerHTML = htmlCountryName;
+
+    let html = `
+          
+            <div class="spheres-section">
+                <div class="section-title">Sphères :</div>
+        `;
+
+    country.spheres.forEach((sphere) => {
+      html += `
+                <div class="sphere-item">
+                    <span class="sphere-quantity">${sphere.quantity}</span>
+                    <span class="sphere-details">${sphere.capacity} (${sphere.type})</span>
+                </div>
+            `;
+    });
+
+    html += `</div>`;
+
+    detailsPanel.innerHTML = html;
+    detailsPanel.classList.add("visible");
+  }
+</script>
