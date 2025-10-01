@@ -1311,9 +1311,9 @@
 
 
   
-        <div id="projectModal" class="modal">
-          <h2 class="country-title"></h2>
-          <div class="country-projects-content"></div>
+        <div class="details_wrapper">
+          <h2 class="details_country_title"></h2>
+          <div class="details_content"></div>
       </div>
 
 
@@ -1372,8 +1372,8 @@ function showCountryDetails(countryCode) {
   const country = projectsDatabase[countryCode];
   if (!country) return;
 
-  const detailsPanel = document.querySelector(".country-projects-content");
-  const countryName = document.querySelector(".country-title");
+  const detailsWrapper = document.querySelector(".details_content");
+  const countryName = document.querySelector(".details_country_title");
 
   countryName.innerHTML = country.name;
 
@@ -1381,15 +1381,14 @@ function showCountryDetails(countryCode) {
 
   country.projects.forEach((project) => {
     html += `
-      <div class="project-section">
-        <div class="section-title">${project.name} :</div>
+      <div class="details_item">
+        <div class="details_item_title">${project.name} :</div>
     `;
 
     project.items.forEach((item) => {
       html += `
-        <div class="project-item">
-          <span class="project-quantity">${item.quantity}</span>
-          <span class="project-details">${item.name}</span>
+        <div class="details_item_quantity">
+          <div> ${item.quantity} ${item.name}</div> 
         </div>
       `;
     });
@@ -1397,7 +1396,7 @@ function showCountryDetails(countryCode) {
     html += `</div>`;
   });
 
-  detailsPanel.innerHTML = html;
+  detailsWrapper.innerHTML = html;
 }
 </script>
 

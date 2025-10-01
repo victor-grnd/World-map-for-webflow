@@ -12,16 +12,21 @@ body {
   margin: 0;
   padding: 0;
   border: solid red 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .map_wrapper {
-  width: 100%; /* ← CHANGÉ : de 50% à 100% */
+  width: 80%; /* ← CHANGÉ : de 50% à 100% */
   height: 100%; /* ← AJOUTÉ : hauteur complète */
   max-width: none; /* ← CHANGÉ : supprime la limitation */
   display: flex; /* ← AJOUTÉ : pour centrer le SVG */
   justify-content: center;
   align-items: center;
   border: solid slateblue 6px;
+  flex-shrink: 0;
 }
 
 #world-map {
@@ -68,4 +73,26 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.details_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  gap: 12px;
+}
+
+.details_wrapper {
+  border: solid tan 8px;
+}
+
+.details_item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.details_item_title {
+  font-weight: bold;
 }
